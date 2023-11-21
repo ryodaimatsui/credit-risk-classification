@@ -1,1 +1,15 @@
-# credit-risk-classification
+# Credit Risk Classification [Module 20 Challenge]
+## Overview of the Analysis
+The purpose of this analysis is to identify the creditworthiness of borrowers through the construction of a machine learning model. To begin, a dataset of historical lending activity from a peer-to-peer lending services — "lending_data.csv" — is read in as a Pandas DataFrame. In total, the DataFrame consisted of 8 columns. The first 7 columns — "loan_size," "interest_rate," "borrower_income," "debt_to_income," "num_of_accounts," "derogatory_marks," and "total_debt" — were separated and reassigned to the variable "X", or the feature vectors of our model. Likewise, the "loan_status," encoded as either 0 (healthy loans) or 1 (high-risk loans) were assigned to the variable "y", the target. 
+
+Utilizing the "train_test_learn" module from sckit-learn, the data was split into training and testing datasets. With these datasets, the Logistic Regression model is first initialized, then fitted with the training datasets, "X_train" and "y_train." Following this, the testing dataset, "X_test," is plugged into the fitted model in order to generate the predictions or labels. This process is repeated again with a resampling of the training dataset, which is achieved through the "RandomOverSampler" module from "imbalanced-learn." 
+
+## Results
+- Machine Learning Model 1 (Original Data)
+  - The logistic regression model demonstrates impeccable predictive performance for healthy loans (labeled '0'), achieving perfect precision, recall, and F1-score. Conversely, while still indicative of a strong performance, the prediction of high-risk loans (labeled '1') reaches the high 80s. Nonetheless, the balanced accuracy score, approximately 94%, reinforces the model's efficacy in handling imbalanced classes.
+
+- Machine Learning Model 2 (Resampled Data)
+  - Compared to the logistic regression model fitted with the original data, the model trained on oversampled data significantly enhances the prediction of high-risk loans. Similar to the original model, the current model maintains impeccable predictive performance for healthy loans. However, unlike the original model, the current version demonstrates notably improved predictive performance for high-risk loans, evident in the increased recall and F1-score. Furthermore, the balanced accuracy score for this model reflects a 5% improvement over the previous iteration.
+ 
+## Summary
+- In short, the machine learning models constructed performances strongly in predicting the creditworthiness of a borrower. More specifically, while both models predict healthy loans perfectly, they are much less accurate in predicting high-risk loan. This poses a dilemma, as to which is more important to predict. While it is best to be able to predict both near or at perfect levels (precision, recall, F1-score), it is nevertheless, more important to be able to predict high-risk loans, as any errors can lead to a loss for the lender. Lastly, based upon the balanced accuracy scores, the model utilizing the resampled data performs the best. 
